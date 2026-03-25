@@ -39,3 +39,53 @@ Los flujos automatizados cubren el registro de usuario, inicio de sesión y la c
 | 8 | Método de pago | Seleccionar **tarjeta de crédito** como método de pago |
 | 9 | Información de pago | Completar los datos de la tarjeta de crédito |
 | 10 | Confirmación | Confirmar la orden y validar el mensaje **"Your order has been successfully processed!"** |
+
+---
+
+## Ejecución de Pruebas
+
+### Ejecutar todos los escenarios
+
+```bash
+./gradlew test
+```
+
+### Ejecutar por escenario específico
+
+| Escenario | Comando |
+|-----------|---------|
+| Registro de usuario | `./gradlew test -Dcucumber.filter.tags="@register"` |
+| Inicio de sesión | `./gradlew test -Dcucumber.filter.tags="@login"` |
+| Compra de producto | `./gradlew test -Dcucumber.filter.tags="@purchase"` |
+| Escenarios negativos | `./gradlew test -Dcucumber.filter.tags="@negative"` |
+
+### Generar reporte HTML de Serenity
+
+```bash
+./gradlew aggregate
+```
+
+> El reporte se genera en `target/site/serenity/index.html`
+
+---
+
+## Estructura del Proyecto
+
+```
+src/test
+├── java/co/com/stricentis/
+│   ├── hooks/                  # Ciclo de vida de los escenarios (setup y teardown del Stage de Screenplay)
+│   ├── models/                 # Clases de datos (UserModel, LoginModel, BillingModel, PaymentModel)
+│   ├── questions/              # Preguntas Screenplay: validan el estado de la UI y retornan un valor
+│   ├── runners/                # Configuración del runner de Cucumber con JUnit 5
+│   ├── stepdefinitions/        # Mapeo entre los pasos Gherkin y las acciones Screenplay
+│   ├── tasks/                  # Acciones que el actor puede realizar sobre la aplicación
+│   └── userinterface/          # Localizadores de elementos web organizados por página
+│
+└── resources/
+    ├── features/               # Escenarios de prueba escritos en Gherkin (español)
+    │   ├── register.feature
+    │   ├── login.feature
+    │   └── purchase_product.feature
+    └── serenity.conf           # Configuración de Serenity (driver, URL base, screenshots)
+```
