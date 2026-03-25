@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.1'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '5.3.7'
 }
 
 group = 'co.com.stricentis'
@@ -16,29 +16,32 @@ repositories {
 }
 
 ext {
-    serenityVersion = '4.2.1'
+    serenityVersion = '5.3.7'
     lombokVersion  = '1.18.34'
 }
 
 dependencies {
 
-    // Serenity
+    // Serenity BOM — gestiona versiones de Serenity, Cucumber y Selenium //
+    testImplementation platform("net.serenity-bdd:serenity-bom:${serenityVersion}")
+
+    // Serenity //
     testImplementation "net.serenity-bdd:serenity-core"
     testImplementation "net.serenity-bdd:serenity-cucumber"
     testImplementation "net.serenity-bdd:serenity-screenplay"
     testImplementation "net.serenity-bdd:serenity-screenplay-webdriver"
     testImplementation "net.serenity-bdd:serenity-ensure"
 
-    //  Cucumber
+    //  Cucumber //
     testImplementation "io.cucumber:cucumber-java"
     testImplementation "io.cucumber:cucumber-junit-platform-engine"
 
-    //JUnit 5
+    //JUnit 5 //
     testImplementation "org.junit.platform:junit-platform-suite"
     testImplementation "org.junit.platform:junit-platform-suite-api"
     testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
 
-    //  Lombok
+    //  Lombok //
     compileOnly              "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor      "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly          "org.projectlombok:lombok:${lombokVersion}"
@@ -50,6 +53,6 @@ test {
     systemProperties System.properties
 }
 
-// Genera el reporte HTML de Serenity tras correr los tests
+// Genera el reporte HTML de Serenity al ejecutar los tests //
 check.dependsOn aggregate
 aggregate.mustRunAfter test
