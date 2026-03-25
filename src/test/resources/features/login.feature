@@ -16,11 +16,11 @@ Feature: Inicio de sesion
 
     Examples:
       | email                        | password  |
-      | yiler76657@smkanba.com               | Test12345*|
+      | easy.bee.rwmc@hidingmail.com        | Test12345*|
 
   @login @negative
   Scenario: Inicio de sesion con contrasena incorrecta
     When el usuario inicia sesion con sus credenciales
       | email                        | password     |
-      | ,             | WrongPass123 |
+      | easy.bee.rwmc@hidingmail.com               | WrongPass123 |
     Then el usuario ve el mensaje de error "The credentials provided are incorrect"
