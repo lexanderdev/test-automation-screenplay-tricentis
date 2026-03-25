@@ -9,7 +9,7 @@ Feature: Compra de un producto
     Given el usuario navega a la pagina de inicio de sesion
     When el usuario inicia sesion con sus credenciales
       | email          | password   |
-      | alt.e3-6opqb217@yopmail.com | Test123. |
+      | easy.bee.rwmc@hidingmail.com | Test12345* |
 
   @purchase
   Scenario: Compra exitosa de un producto desde Desktops

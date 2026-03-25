@@ -16,7 +16,7 @@ Feature: Registro de usuario
 
     Examples:
       | gender | firstName | lastName     | email            | password  |
-      | Male   | Alexander | Vanegas      | yiler76657@smkanba.com  | Test12345*
+      | Male   | Alexander | Vanegas      | easy.bee.rwmc@hidingmail.com | Test12345* |
 
   @register @negative
   Scenario: Registro con un correo ya registrado
