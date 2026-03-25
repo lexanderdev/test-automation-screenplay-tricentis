@@ -24,9 +24,6 @@ public class CheckoutPage extends PageObject {
     public static final Target BILLING_PHONE           = Target.the("campo telefono en billing")
             .located(By.id("BillingNewAddress_PhoneNumber"));
 
-    public static final Target SHIP_TO_SAME_ADDRESS    = Target.the("checkbox enviar a la misma direccion")
-            .located(By.id("ShipToSameAddress"));
-
     public static final Target BILLING_CONTINUE        = Target.the("boton continuar en billing")
             .located(By.cssSelector("#billing-buttons-container .new-address-next-step-button"));
 
