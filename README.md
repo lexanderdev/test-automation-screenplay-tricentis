@@ -74,7 +74,7 @@ Los flujos automatizados cubren el registro de usuario, inicio de sesión y la c
 ```
 src/test
 ├── java/co/com/stricentis/
-│   ├── hooks/                  # Ciclo de vida de los escenarios (setup y teardown del Stage de Screenplay)
+│   ├── hooks/                  # Ciclo de vida de los escenarios, inicialización y cierre del navegador antes y después de cada escenario
 │   ├── models/                 # Clases de datos (UserModel, LoginModel, BillingModel, PaymentModel)
 │   ├── questions/              # Preguntas Screenplay: validan el estado de la UI y retornan un valor
 │   ├── runners/                # Configuración del runner de Cucumber con JUnit 5
@@ -89,3 +89,32 @@ src/test
     │   └── purchase_product.feature
     └── serenity.conf           # Configuración de Serenity (driver, URL base, screenshots)
 ```
+
+---
+
+## Estado de Implementación
+
+### ✅ Implementado
+
+- Arquitectura Screenplay con capas `tasks`, `questions`, `userinterface`, `models`, `hooks` y `stepdefinitions`
+- Flujo E2E de registro de usuario con escenario positivo y negativo
+- Flujo E2E de inicio de sesión con escenario positivo y negativo
+- Flujo E2E de compra de producto: navegación por categorías, carrito, checkout, pago con tarjeta y confirmación de orden
+- Modelos de datos con Lombok (`@Data` + `@Builder`) para separar datos de lógica
+- Ejecución por tags (`@register`, `@login`, `@purchase`, `@negative`)
+- Modo incógnito para sesiones de navegador limpias entre ejecuciones
+- Reporte HTML con Serenity BDD
+
+---
+
+### 🚀 Mejoras Futuras
+
+| # | Mejora | Descripción |
+|---|--------|-------------|
+| 1 | **Múltiples ambientes** | Agregar bloques `staging`, `qa` y `production` en `serenity.conf` para ejecutar las pruebas contra distintos entornos sin modificar código |
+| 2 | **Externalización de datos** | Mover los datos de prueba de los features a un servicio externo como **Firebase Realtime Database**, eliminando la necesidad de modificar el código para actualizar credenciales o datos de formulario |
+| 3 | **Análisis de calidad de código** | Integrar **SonarQube** para inspección estática del código, detección de code smells y control de cobertura |
+| 4 | **CI/CD con GitHub Actions** | Configurar un workflow en `.github/workflows/ci.yml` para ejecutar las pruebas automáticamente en cada push o pull request, con publicación del reporte Serenity como artefacto |
+| 5 | **Protección de ramas** | Configurar reglas en GitHub para las ramas `develop` y `main`: requerir pull request aprobado, pasar los checks de CI y restringir push directo a `main` para garantizar que solo código validado llegue a producción |
+| 6 | **Ejecución en paralelo** | Configurar Serenity para ejecutar los features en paralelo y reducir el tiempo total de ejecución |
+| 7 | **Reintentos automáticos** | Configurar reintentos automáticos para escenarios fallidos, evitando falsos negativos causados por inestabilidad de red o tiempos de respuesta variables |
