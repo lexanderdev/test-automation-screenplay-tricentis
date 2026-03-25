@@ -1,20 +1,55 @@
 plugins {
     id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.1'
 }
 
 group = 'co.com.stricentis'
 version = '1.0-SNAPSHOT'
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 repositories {
     mavenCentral()
 }
 
+ext {
+    serenityVersion = '4.2.1'
+    lombokVersion  = '1.18.34'
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Serenity
+    testImplementation "net.serenity-bdd:serenity-core"
+    testImplementation "net.serenity-bdd:serenity-cucumber"
+    testImplementation "net.serenity-bdd:serenity-screenplay"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver"
+    testImplementation "net.serenity-bdd:serenity-ensure"
+
+    //  Cucumber
+    testImplementation "io.cucumber:cucumber-java"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine"
+
+    //JUnit 5
+    testImplementation "org.junit.platform:junit-platform-suite"
+    testImplementation "org.junit.platform:junit-platform-suite-api"
+    testRuntimeOnly    'org.junit.platform:junit-platform-launcher'
+
+    //  Lombok
+    compileOnly              "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor      "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly          "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
 }
 
 test {
     useJUnitPlatform()
+    systemProperties System.properties
 }
+
+// Genera el reporte HTML de Serenity tras correr los tests
+check.dependsOn aggregate
+aggregate.mustRunAfter test
