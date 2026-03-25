@@ -26,7 +26,7 @@ public class RegisterStepDefinitions {
 
     @When("el usuario completa el formulario de registro")
     public void elUsuarioCompletaElFormularioDeRegistro(DataTable dataTable) {
-        Map<String, String> data = dataTable.asMaps().get(0);
+        Map<String, String> data = dataTable.asMaps().getFirst();
 
         UserModel user = UserModel.builder()
                 .gender(data.get("gender"))
