@@ -22,5 +22,5 @@ Feature: Inicio de sesion
   Scenario: Inicio de sesion con contrasena incorrecta
     When el usuario inicia sesion con sus credenciales
       | email                        | password     |
-      | alex@gmail.com              | WrongPass123 |
+      | ,             | WrongPass123 |
     Then el usuario ve el mensaje de error "The credentials provided are incorrect"
