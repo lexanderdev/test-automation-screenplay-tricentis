@@ -11,7 +11,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "co.com.stricentis.stepdefinitions")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "net.serenitybdd.cucumber.core.plugin.SerenityReporterParallel,pretty")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "co.com.stricentis")
 public class RunnerTags {
 }
