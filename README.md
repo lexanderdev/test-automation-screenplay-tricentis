@@ -118,3 +118,5 @@ src/test
 | 5 | **Protección de ramas** | Configurar reglas en GitHub para las ramas `develop` y `main`: requerir pull request aprobado, pasar los checks de CI y restringir push directo a `main` para garantizar que solo código validado llegue a producción |
 | 6 | **Ejecución en paralelo** | Configurar Serenity para ejecutar los features en paralelo y reducir el tiempo total de ejecución |
 | 7 | **Reintentos automáticos** | Configurar reintentos automáticos para escenarios fallidos, evitando falsos negativos causados por inestabilidad de red o tiempos de respuesta variables |
+| 8 | **Esperas explícitas** | Reemplazar las esperas implícitas por `WaitUntil` antes de interactuar con elementos críticos, garantizando que sean visibles e interactuables antes de continuar y eliminando la posibilidad de flaky tests |
+| 9 | **Estrategia de ejecución por etapas** | Implementar **Smoke Tests** con el tag `@smoke` para ejecutar en cada push solo los escenarios críticos, y configurar un **Nightly Build** en GitHub Actions (`cron: '0 2 * * *'`) para ejecutar la suite E2E completa en horario nocturno, evitando ralentizar el ciclo de desarrollo |
