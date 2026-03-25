@@ -19,7 +19,7 @@ import net.serenitybdd.screenplay.questions.Presence;
 
 import java.util.Map;
 
-public class ComputersStepDefinitions {
+public class PurchaseStepDefinitions {
 
     @When("el usuario navega a la subcategoria {string} dentro de {string}")
     public void elUsuarioNavegaALaSubcategoria(String subCategory, String category) {
