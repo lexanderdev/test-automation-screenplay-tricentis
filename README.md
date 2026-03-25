@@ -1,5 +1,7 @@
 # Automatización E2E - Tricentis Demo Web Shop
 
+> 
+
 ## Descripción
 
 Proyecto de automatización de pruebas end-to-end para la plataforma [Tricentis Demo Web Shop](https://demowebshop.tricentis.com), implementando el patrón **Screenplay** con **Serenity BDD** **Selenium WebDriver** y **Cucumber** .
@@ -68,6 +70,7 @@ Los flujos automatizados cubren el registro de usuario, inicio de sesión y la c
 > El reporte se genera en `target/site/serenity/index.html`
 
 ---
+⚠️ **Antes de ejecutar el escenario de registro**, actualiza el email en la tabla `Examples`  con una dirección de correo que no haya sido registrada previamente
 
 ## Estructura del Proyecto
 
