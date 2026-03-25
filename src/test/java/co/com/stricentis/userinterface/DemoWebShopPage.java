@@ -9,4 +9,5 @@ import org.openqa.selenium.By;
 public class DemoWebShopPage extends PageObject {
 
     public static final Target REGISTER_LINK = Target.the("link de registro").located(By.cssSelector("a.ico-register"));
+    public static final Target LOGIN_LINK    = Target.the("link de inicio de sesion").located(By.cssSelector("a.ico-login"));
 }
